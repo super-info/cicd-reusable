@@ -1,3 +1,0 @@
-name: Springboot-Maven
-on:
-  workflow_call:
