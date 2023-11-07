@@ -4,10 +4,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      checks: write
-      security-events: write
-      pull-requests: write
+    # permissions:
+    #   checks: write
+    #   security-events: write
+    #   pull-requests: write
     steps:
     # Checking out the code
       - name: Checkout                            
