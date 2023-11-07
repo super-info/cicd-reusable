@@ -1,11 +1,6 @@
-name: Springboot-JDK-8
+name: Springboot-JDK-11
 on:
   workflow_call:
-    inputs:
-      jdk-version:
-        description: JDK version to be used for the application
-        required: true
-        type: number
 jobs:
   build:
     runs-on: ubuntu-latest
