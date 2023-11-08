@@ -60,12 +60,11 @@ jobs:
   
      # Generate SBOM
       - name: Generate SBOM
-        shell: bash
         run: |
-          curl -Lo sbom-tool https://github.com/microsoft/sbom-tool/releases/latest/download/sbom-tool-osx-x64
+          curl -Lo sbom-tool https://github.com/microsoft/sbom-tool/releases/latest/download/sbom-tool-linux-x64
           ls -la
           chmod +x sbom-tool
-          ./sbom-tool generate -b ${{ github.workspace }} -bc ${{ github.workspace }} -pn ${{github.repository}} -pv 1.0.0 -nsb ${{github.respository}}
+          ./sbom-tool generate -b ${{ github.workspace }} -bc ${{ github.workspace }} -pn ${{github.repository}} -pv 1.0.0 -nsb ${{github.respository}} -V
           ls -la
     # # Setting up Java Environment
     #   - name: Setup Java JDK
