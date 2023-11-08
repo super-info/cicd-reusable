@@ -20,17 +20,7 @@ on:
       tag:
         required: false
         type: string
-    # secrets:
-    #   gitguradian_api_key:
-    #     required: true
-    #   sonar_token:
-    #     required: true
-    #   git_token:
-    #     required: true
-    #   git_mail:
-    #     required: true
-    #   google_service_key:
-    #     required: true
+
       
 jobs:
   build:
