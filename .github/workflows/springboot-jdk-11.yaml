@@ -41,8 +41,7 @@ jobs:
       - name: Checkout                            
         uses: actions/checkout@v4.1.1
       - name: setting-env
-        env:
-          APP_NAME: ${{steps.settings.outputs.appenv}}
+        run: echo "APP_NAME= ${{steps.settings.outputs.appenv}}" >> $GITHUB_ENV
       - name: echo
         id: app
         run: |
