@@ -47,10 +47,11 @@ jobs:
           echo "passed"
           echo $APP_NAME
           echo ${{ github.repository }}
-          echo "APP_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV 
+          #echo "APP_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV 
           echo ${{env.APP_NAME}}
           echo ${{ github.run_number }}
           echo ${{inputs.tag}}
+          echo $APP_NAME
           
     # #Scanning for secret detection
     #   - name: GitGuardian Shield Action
