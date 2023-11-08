@@ -14,15 +14,7 @@ on:
       google_project_id:
         required: true
         type: string
-      # permission_check:
-      #   required: true
-      #   type: string
-      # permission_security-events:
-      #   required: true
-      #   type: string
-      # permission_pull_requests:
-      #   required: true
-      #   type: string
+
       tag:
         required: false
         type: string
