@@ -1,19 +1,23 @@
 name: Springboot-JDK-11
+permissions:
+   checks: write
+   security-events: write
+   pull-requests: write  
 on:
   workflow_call:
     inputs:
       google_project_id:
         required: true
         type: string
-      permission_check:
-        required: true
-        type: string
-      permission_security-events:
-        required: true
-        type: string
-      permission_pull_requests:
-        required: true
-        type: string
+      # permission_check:
+      #   required: true
+      #   type: string
+      # permission_security-events:
+      #   required: true
+      #   type: string
+      # permission_pull_requests:
+      #   required: true
+      #   type: string
       tag:
         required: false
         type: string
@@ -32,10 +36,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      checks: ${{ inputs.permission_check }}
-      security-events: ${{ inputs.permission_security-events }}
-      pull-requests: ${{ inputs.permission_pull_requests }}
+    # permissions:
+    #   checks: ${{ inputs.permission_check }}
+    #   security-events: ${{ inputs.permission_security-events }}
+    #   pull-requests: ${{ inputs.permission_pull_requests }}
     steps:
     # Checking out the code
       - name: Checkout                            
@@ -50,6 +54,7 @@ jobs:
           echo "APP_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV 
           echo ${{env.APP_NAME}}
           echo ${{ github.run_number }}
+          echo ${{inputs.tag}}
           
     # #Scanning for secret detection
     #   - name: GitGuardian Shield Action
