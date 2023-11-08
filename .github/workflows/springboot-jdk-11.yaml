@@ -33,9 +33,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      checks: ${{inputs.permission_check}}
-      security-events: ${{inputs.permission_security-events}}
-      pull-requests: ${{inputs.permission_pull_requests}}
+      checks: ${{ inputs.permission_check }}
+      security-events: ${{ inputs.permission_security-events }}
+      pull-requests: ${{ inputs.permission_pull_requests }}
     steps:
     # Checking out the code
       - name: Checkout                            
