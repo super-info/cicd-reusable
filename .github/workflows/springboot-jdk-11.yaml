@@ -2,6 +2,9 @@ name: Springboot-JDK-11
 on:
   workflow_call:
     inputs:
+      app_name:
+        required: true
+        type: string
       google_project_id:
         required: true
         type: string
@@ -54,6 +57,7 @@ jobs:
           echo ${{ github.run_number }}
           echo ${{inputs.tag}}
           echo $APP_NAME
+          echo ${{ inputs.app_name }}
           
     # #Scanning for secret detection
     #   - name: GitGuardian Shield Action
