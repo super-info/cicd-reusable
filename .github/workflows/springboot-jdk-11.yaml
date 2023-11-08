@@ -70,9 +70,9 @@ jobs:
       - name: SBOM
         uses: anchore/sbom-action@v0.14.3
         with:
-          path: .
+          path: ./
           artifact-name: sbom-${{github.repository}}
-          output-file: .
+          output-file: ./
           
 
 
