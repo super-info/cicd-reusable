@@ -1,8 +1,4 @@
-name: Springboot-JDK-11
-permissions:
-   checks: write
-   security-events: write
-   pull-requests: write  
+name: Springboot-JDK-11 
 on:
   workflow_call:
     inputs:
