@@ -136,7 +136,7 @@ jobs:
         
         uses: RaccoonDev/push-docker-gcr@v1
         env:
-          GCLOUD_SERVICE_KEY: ${{ secrets.GOOGLE_SERVICE_KEY }}
+          GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
           GOOGLE_PROJECT_ID: ${{ inputs.google_project_id }}
         with:
           image_name: ${{ env.APP_NAME }}
