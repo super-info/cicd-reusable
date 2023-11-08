@@ -60,6 +60,7 @@ jobs:
   
      # Generate SBOM
       - name: Generate SBOM
+        shell: bash
         run: |
           curl -Lo sbom-tool https://github.com/microsoft/sbom-tool/releases/latest/download/sbom-tool-osx-x64
           ls -la
