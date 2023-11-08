@@ -66,6 +66,12 @@ jobs:
           chmod +x sbom-tool
           ./sbom-tool generate -b ${{ github.workspace }} -bc ${{ github.workspace }} -pn ${{github.repository}} -pv 1.0.0 -ps ${{github.repository_owner}} -nsb https://sbom.mycompany.com -V
           ls -la
+      - name: Upload Sbom 
+        uses: actions/upload-artifact@v3.1.3
+        with:
+          name: SBOM-Report
+          path: ${{ github.workspace }}/_manifest
+          
     # # Setting up Java Environment
     #   - name: Setup Java JDK
     #     uses: actions/setup-java@v3.13.0
