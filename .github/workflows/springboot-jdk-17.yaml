@@ -209,8 +209,9 @@ jobs:
   # pushing docker images to GCR
   Deploy:
     needs: Trivy-Scan
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
     # if: github.event.action == 'closed' && github.event.pull_request.merged == true
-   # if: ${{ github.ref == 'refs/heads/main' }}
+    # if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
       - name: checkout
