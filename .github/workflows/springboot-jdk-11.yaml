@@ -200,7 +200,7 @@ jobs:
              
   # pushing docker images to GCR
   Docker-build:
-    if: github.event.action == 'closed' && github.event.pull_request.merged == true
+    # if: github.event.action == 'closed' && github.event.pull_request.merged == true
     needs: Trivy-Scan
     runs-on: ubuntu-latest
     steps:
