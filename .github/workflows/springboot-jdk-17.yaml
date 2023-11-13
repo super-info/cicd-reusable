@@ -92,7 +92,7 @@ jobs:
         uses: actions/setup-java@v3.13.0
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17'
       - name: setting-app-env
         run: |
           echo "APP_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
