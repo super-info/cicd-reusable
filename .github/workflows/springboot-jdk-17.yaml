@@ -31,42 +31,39 @@ on:
     #     required: true
       
 jobs:
-  secret-detect:
-    # if: github.event.action == 'closed'
-    runs-on: ubuntu-latest
-    outputs:
-      appfile: ${{ steps.appenv.outputs.app-name}}
-    steps:
-    # Checking out the code
-      - name: Checkout                            
-        uses: actions/checkout@v4.1.1
-      - name: setting-app-env
-        id: appenv
-        run: |
-          echo "app-name= $(basename ${{github.repository}})" >> $GITHUB_OUTPUT
-          echo ${{ github.ref_name }}
+  # secret-detect:
+  #   # if: github.event.action == 'closed'
+  #   runs-on: ubuntu-latest
+  #   outputs:
+  #     appfile: ${{ steps.appenv.outputs.app-name}}
+  #   steps:
+  #   # Checking out the code
+  #     - name: Checkout                            
+  #       uses: actions/checkout@v4.1.1
+  #     - name: setting-app-env
+  #       id: appenv
+  #       run: |
+  #         echo "app-name= $(basename ${{github.repository}})" >> $GITHUB_OUTPUT
+  #         echo ${{ github.ref_name }}
           
-      - name: GitGuardian Shield Action
-        env:
-          GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
-        run: |
-          pipx install ggshield
-          ggshield secret scan ci
-        continue-on-error: true
+  #     - name: GitGuardian Shield Action
+  #       env:
+  #         GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
+  #       run: |
+  #         pipx install ggshield
+  #         ggshield secret scan ci
+  #       continue-on-error: true
   
 
 # Generate SBOM
   SBOM:
-    needs: secret-detect
     runs-on: ubuntu-latest
     steps:
       - name: Checkout                            
         uses: actions/checkout@v4.1.1
       - name: setting-app-env
-        env: 
-          APP_NAME: ${{ needs.secret-detect.outputs.appfile }}
         run: |
-          echo $APP_NAME
+          echo "APP_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
       - name: Generate SBOM
         run: |
           echo $APP_NAME
@@ -84,7 +81,7 @@ jobs:
           
   #Building Maven Artifact
   Build:
-    needs: [SBOM, secret-detect]
+    needs: SBOM
     runs-on: ubuntu-latest
     steps:
       - name: Checkout                            
