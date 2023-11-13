@@ -32,7 +32,7 @@ on:
       
 jobs:
   secret-detect:
-    if: github.event.action == 'closed'
+    # if: github.event.action == 'closed'
     runs-on: ubuntu-latest
     outputs:
       appfile: ${{ steps.appenv.outputs.app-name}}
