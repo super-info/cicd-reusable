@@ -1,4 +1,4 @@
-name: Deployement
+name: Deploy
 env:
   DB_USER: ${{ secrets.DB_USER }}
   DB_PASS: ${{ secrets.DB_PASS }}
@@ -20,16 +20,25 @@ jobs:
         run: |
           echo "APP_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
           echo $APP_NAME
+      - name: Setup Java JDK
+        uses: actions/setup-java@v3.13.0
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Build
+        run: |
+          mvn clean package
+          cp target/*.jar ./
       # - name: Downloading the docker build image
       #   uses: actions/download-artifact@v2.1.1
       #   with:
       #     name: docker-img
       #     path: ./
-      - name: Download build artifact
-        uses: actions/download-artifact@v2.1.1
-        with:
-          name: build
-          path: .
+      # - name: Download build artifact
+      #   uses: actions/download-artifact@v2.1.1
+      #   with:
+      #     name: build
+      #     path: .
 
       # - name: Caching docker build files
       #   uses: actions/cache@v3.3.2
