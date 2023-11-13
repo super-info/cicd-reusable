@@ -199,9 +199,9 @@ jobs:
       #     path: ${{github.workspace}}/*.tar
              
   # pushing docker images to GCR
-  Docker-build:
+  Deploy:
     # if: github.event.action == 'closed' && github.event.pull_request.merged == true
-    needs: Trivy-Scan
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
       - name: checkout
