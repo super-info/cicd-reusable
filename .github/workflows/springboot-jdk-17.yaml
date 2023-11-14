@@ -143,14 +143,14 @@ jobs:
             target/*.jar
             target/site/jacoco/jacoco.xml
 
-      - name: Upload Jfrog Artifact
-        uses: jfrog/setup-jfrog-cli@v3
-        env:
-         JF_URL: https://devopsansible.jfrog.io/artifactory/api/maven/ansible_artifact
-         JF_USER: aravindrekha1504@gmail.com
-         JF_PASSWORD: Admin@123456
-      - run: |
-          jf rt u target/*.jar /ansible_artifact/
+      # - name: Upload Jfrog Artifact
+      #   uses: jfrog/setup-jfrog-cli@v3
+      #   env:
+      #    JF_URL: https://devopsansible.jfrog.io/artifactory/api/maven/ansible_artifact
+      #    JF_USER: aravindrekha1504@gmail.com
+      #    JF_PASSWORD: Admin@123456
+      # - run: |
+      #     jf rt u target/*.jar /ansible_artifact/
 
       - name: Configuring artifactory
         uses: "jfrog/setup-jfrog-cli@v2"
