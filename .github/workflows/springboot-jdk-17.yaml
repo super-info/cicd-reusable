@@ -148,8 +148,8 @@ jobs:
           curl -fL https://getcli.jfrog.io | sh
           chmod +x jfrog
           sudo mv jfrog /usr/local/bin/
-          jfrog config --url "https://devopsansible.jfrog.io/artifactory" --user "aravindrekha1504@gmail.com" --apikey "cmVmdGtuOjAxOjE3MzE0OTAwOTU6eXdWanB2VlZwVWUzV3ZtSHhlUEx4SlVub2w1" --interactive=false
-          jfrog u "target/*.jar" "api/maven/maven_jar/"
+          jfrog config add myArtifactory --url=https://devopsansible.jfrog.io/ --user=aravindrekha1504@gmail.com --password=Admin@123456 --interactive=false
+          jfrog u "target/*.jar" "api/maven/ansible_jar-libs-snapshot/"
 
      # Analysing the Source Code using SonarCloud
   # Code-Analysis:
