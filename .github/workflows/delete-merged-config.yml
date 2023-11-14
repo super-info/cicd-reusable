@@ -12,8 +12,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}       
         with:
-          exclude: 
-            -development
-            -qa
-            -feature-*
           delete_closed_pr: true
