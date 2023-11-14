@@ -143,13 +143,10 @@ jobs:
             target/*.jar
             target/site/jacoco/jacoco.xml
 
-      - name: Deploy to JFrog Artifactory
-        run: |
-          curl -fL https://getcli.jfrog.io | sh
-          chmod +x jfrog
-          sudo mv jfrog /usr/local/bin/
-          jfrog config add myArtifactory --url=https://devopsansible.jfrog.io/ --user=aravindrekha1504@gmail.com --password=Admin@123456 --interactive=false
-          jfrog rt u "target/*.jar" "api/maven/ansible_jar-libs-snapshot/"
+      - name: Upload Jfrog Artifact
+      - uses: jfrog/setup-jfrog-cli@v3
+      - run: |
+          jf rt u target/*.jar artifactory/api/maven/ansible_artifact/
 
      # Analysing the Source Code using SonarCloud
   # Code-Analysis:
