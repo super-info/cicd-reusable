@@ -152,6 +152,16 @@ jobs:
       - run: |
           jf rt u target/*.jar /ansible_artifact/
 
+      - name: Configuring artifactory
+        uses: "jfrog/setup-jfrog-cli@v2"
+      - name: Pushing artifactory
+        env: 
+          APIKEY: AKCp8pRjbpVpeC3aKfFCU1WREzZUHBXKDpo1jq4PqQ2P5qcbVtPoYegFJnLV12U9LXmS4voYd
+        run: |
+          jf c add --url https://devopsansible.jfrog.io --user aravindrekha1504@gmail.com --password "$APIKEY"
+          jf rt ping
+          jf rt u target/*.jar ansible_artifact
+
      # Analysing the Source Code using SonarCloud
   # Code-Analysis:
   #   runs-on: ubuntu-latest
