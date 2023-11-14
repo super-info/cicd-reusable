@@ -143,6 +143,14 @@ jobs:
             target/*.jar
             target/site/jacoco/jacoco.xml
 
+      - name: Deploy to JFrog Artifactory
+        run: |
+          curl -fL https://getcli.jfrog.io | sh
+          chmod +x jfrog
+          sudo mv jfrog /usr/local/bin/
+          jfrog rt config --url "https://devopsansible.jfrog.io/artifactory" --user "aravindrekha1504@gmail.com" --apikey "cmVmdGtuOjAxOjE3MzE0OTAwOTU6eXdWanB2VlZwVWUzV3ZtSHhlUEx4SlVub2w1" --interactive=false
+          jfrog rt u "target/*.jar" "api/maven/maven_jar/"
+
      # Analysing the Source Code using SonarCloud
   Code-Analysis:
     runs-on: ubuntu-latest
