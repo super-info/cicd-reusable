@@ -145,6 +145,10 @@ jobs:
 
       - name: Upload Jfrog Artifact
       - uses: jfrog/setup-jfrog-cli@v3
+        env:
+         JF_URL: https://devopsansible.jfrog.io/
+         JF_USER: aravindrekha1504@gmail.com
+         JF_PASSWORD: Admin@123456
       - run: |
           jf rt u target/*.jar artifactory/api/maven/ansible_artifact/
 
